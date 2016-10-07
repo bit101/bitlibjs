@@ -3,8 +3,6 @@
 
 ${bitlib_math}
 
-${bitlib_canvas}
-
 ${bitlib_context}
 
 ${bitlib_color}
