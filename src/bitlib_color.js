@@ -4,7 +4,7 @@ bitlib.color = {
     },
 
     rgba: function(r, g, b, a) {
-        return this._Color.create(r, g, b, a);
+        return this.Color.create(r, g, b, a);
     },
 
     number: function(num) {
@@ -12,7 +12,7 @@ bitlib.color = {
     },
 
     randomRGB: function() {
-        return this.number(bitlib.random.int(0, 0xffffff));
+        return this.number(bitlib.random.int(0xffffff));
     },
 
     gray: function(shade) {
@@ -20,7 +20,7 @@ bitlib.color = {
     },
 
     randomGray: function() {
-        return this.gray(bitlib.random.int(0, 255));
+        return this.gray(bitlib.random.int(255));
     },
 
     hsv: function(h, s, v) {
@@ -265,16 +265,16 @@ bitlib.color = {
         yellowgreen: [154,205,50]
     },
 
-    _Color: {
+    Color: {
         isColorObject: true,
 
         create: function(r, g, b, a) {
             var obj = Object.create(this);
-            obj.init(r, g, b, a);
+            obj._init(r, g, b, a);
             return obj;
         },
 
-        init: function(r, g, b, a) {
+        _init: function(r, g, b, a) {
             this.red = r;
             this.green = g;
             this.blue = b;

@@ -70,7 +70,7 @@ bitlib.color = {
     },
 
     rgba: function(r, g, b, a) {
-        return this._Color.create(r, g, b, a);
+        return this.Color.create(r, g, b, a);
     },
 
     number: function(num) {
@@ -78,7 +78,7 @@ bitlib.color = {
     },
 
     randomRGB: function() {
-        return this.number(bitlib.random.int(0, 0xffffff));
+        return this.number(bitlib.random.int(0xffffff));
     },
 
     gray: function(shade) {
@@ -86,7 +86,7 @@ bitlib.color = {
     },
 
     randomGray: function() {
-        return this.gray(bitlib.random.int(0, 255));
+        return this.gray(bitlib.random.int(255));
     },
 
     hsv: function(h, s, v) {
@@ -331,16 +331,16 @@ bitlib.color = {
         yellowgreen: [154,205,50]
     },
 
-    _Color: {
+    Color: {
         isColorObject: true,
 
         create: function(r, g, b, a) {
             var obj = Object.create(this);
-            obj.init(r, g, b, a);
+            obj._init(r, g, b, a);
             return obj;
         },
 
-        init: function(r, g, b, a) {
+        _init: function(r, g, b, a) {
             this.red = r;
             this.green = g;
             this.blue = b;
@@ -355,24 +355,24 @@ bitlib.color = {
 };
 
 bitlib.random = {
-    seed: Date.now(),
-    a: 1664525,
-    c: 1013904223,
-    m: Math.pow(2, 32),
+    _seed: Date.now(),
+    _a: 1664525,
+    _c: 1013904223,
+    _m: Math.pow(2, 32),
 
-    setSeed: function(seed) {
-        this.seed = seed;
+    seed: function(seed) {
+        this._seed = seed;
     },
 
     _int: function() {
         // range [0, 2^32)
-        this.seed = (this.seed * this.a + this.c) % this.m;
-        return this.seed;
+        this._seed = (this._seed * this._a + this._c) % this._m;
+        return this._seed;
     },
 
     _float: function() {
         // range [0, 1)
-        return this._int() / this.m;
+        return this._int() / this._m;
     },
 
     bool: function(percent) {
@@ -385,6 +385,9 @@ bitlib.random = {
 
     float: function(min, max) {
         // range [min, max)
+        if(arguments.length === 1) {
+            return this._float() * min;
+        }
         if(arguments.length === 2) {
             return min + this._float() * (max - min);
         }
@@ -393,6 +396,9 @@ bitlib.random = {
 
     int: function(min, max) {
         // range [min, max)
+        if(arguments.length === 1) {
+            return Math.floor(this._float() * min);
+        }
         if(arguments.length === 2) {
             return Math.floor(this.float(min, max));
         }
@@ -402,6 +408,47 @@ bitlib.random = {
 };
 
 
+bitlib.anim = function(fps, renderCallback) {
+
+    return {
+        fps: fps,
+        renderCallback: renderCallback,
+
+        start: function () {
+            if (!this.running) {
+                this.running = true;
+                this.render();
+            }
+        },
+
+        stop: function () {
+            this.running = false;
+        },
+
+        toggle: function () {
+            if (this.running) {
+                this.stop();
+            }
+            else {
+                this.start();
+            }
+        },
+
+        render: function () {
+            if (this.running) {
+                if (this.renderCallback) {
+                    this.renderCallback();
+                }
+                var self = this;
+                setTimeout(function () {
+                    requestAnimationFrame(function () {
+                        self.render();
+                    });
+                }, 1000 / this.fps);
+            }
+        }
+    }
+}
 
 
     if (typeof define === "function" && define.amd) {

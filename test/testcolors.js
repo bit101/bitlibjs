@@ -70,7 +70,7 @@ function testNumber(x, y) {
 }
 
 function testRandomRGB(x, y) {
-    bitlib.random.setSeed(0);
+    bitlib.random.seed(0);
     context.save();
     context.translate(x, y);
     for(var y = 0; y < 100; y += 20) {
@@ -88,7 +88,7 @@ function testRandomRGBSeeded(x, y) {
     context.save();
     context.translate(x, y);
     for(var y = 0; y < 100; y += 20) {
-        bitlib.random.setSeed(0);
+        bitlib.random.seed(0);
         for (var x = 0; x < 100; x += 20) {
             context.fillStyle = bitlib.color.randomRGB();
             context.fillRect(x, y, 19, 19);
@@ -118,7 +118,7 @@ function testGray(x, y) {
 }
 
 function testRandomGray(x, y) {
-    bitlib.random.setSeed(0);
+    bitlib.random.seed(0);
     context.save();
     context.translate(x, y);
     for(var y = 0; y < 100; y += 20) {
@@ -136,7 +136,7 @@ function testRandomGraySeeded(x, y) {
     context.save();
     context.translate(x, y);
     for(var y = 0; y < 100; y += 20) {
-        bitlib.random.setSeed(0);
+        bitlib.random.seed(0);
         for (var x = 0; x < 100; x += 20) {
             context.fillStyle = bitlib.color.randomGray();
             context.fillRect(x, y, 19, 19);
@@ -183,7 +183,7 @@ function testStrings(x, y) {
     context.save();
     context.translate(x, y);
     for(var y = 0; y < 100; y += 20) {
-        bitlib.random.setSeed(0);
+        bitlib.random.seed(0);
         for (var x = 0; x < 100; x += 20) {
             context.fillStyle = bitlib.color.string(strings[index++]);
             context.fillRect(x, y, 19, 19);

@@ -9,6 +9,7 @@ ${bitlib_color}
 
 ${bitlib_random}
 
+${bitlib_anim}
 
 
     if (typeof define === "function" && define.amd) {

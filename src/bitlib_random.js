@@ -1,22 +1,22 @@
 bitlib.random = {
-    seed: Date.now(),
-    a: 1664525,
-    c: 1013904223,
-    m: Math.pow(2, 32),
+    _seed: Date.now(),
+    _a: 1664525,
+    _c: 1013904223,
+    _m: Math.pow(2, 32),
 
-    setSeed: function(seed) {
-        this.seed = seed;
+    seed: function(seed) {
+        this._seed = seed;
     },
 
     _int: function() {
         // range [0, 2^32)
-        this.seed = (this.seed * this.a + this.c) % this.m;
-        return this.seed;
+        this._seed = (this._seed * this._a + this._c) % this._m;
+        return this._seed;
     },
 
     _float: function() {
         // range [0, 1)
-        return this._int() / this.m;
+        return this._int() / this._m;
     },
 
     bool: function(percent) {
@@ -29,6 +29,9 @@ bitlib.random = {
 
     float: function(min, max) {
         // range [min, max)
+        if(arguments.length === 1) {
+            return this._float() * min;
+        }
         if(arguments.length === 2) {
             return min + this._float() * (max - min);
         }
@@ -37,6 +40,9 @@ bitlib.random = {
 
     int: function(min, max) {
         // range [min, max)
+        if(arguments.length === 1) {
+            return Math.floor(this._float() * min);
+        }
         if(arguments.length === 2) {
             return Math.floor(this.float(min, max));
         }
