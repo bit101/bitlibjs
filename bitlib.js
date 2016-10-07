@@ -91,7 +91,7 @@ bitlib.color = {
     },
 
     randomRGB: function() {
-        return this.number(bitlib.random.nextInt(0, 0xffffff));
+        return this.number(bitlib.random.int(0, 0xffffff));
     },
 
     gray: function(shade) {
@@ -99,7 +99,7 @@ bitlib.color = {
     },
 
     randomGray: function() {
-        return this.gray(bitlib.random.nextInt(0, 255));
+        return this.gray(bitlib.random.int(0, 255));
     },
 
     hsv: function(h, s, v) {
@@ -377,39 +377,39 @@ bitlib.random = {
         this.seed = seed;
     },
 
-    _next: function() {
+    _int: function() {
         // range [0, 2^32)
         this.seed = (this.seed * this.a + this.c) % this.m;
         return this.seed;
     },
 
-    _nextFloat: function() {
+    _float: function() {
         // range [0, 1)
-        return this._next() / this.m;
+        return this._int() / this.m;
     },
 
-    nextBool: function(percent) {
+    bool: function(percent) {
         // percent is chance of getting true
         if(percent == null) {
             percent = 0.5;
         }
-        return this._nextFloat() < percent;
+        return this._float() < percent;
     },
 
-    nextFloat: function(min, max) {
+    float: function(min, max) {
         // range [min, max)
         if(arguments.length === 2) {
-            return min + this._nextFloat() * (max - min);
+            return min + this._float() * (max - min);
         }
-        return this._nextFloat();
+        return this._float();
     },
 
-    nextInt: function(min, max) {
+    int: function(min, max) {
         // range [min, max)
         if(arguments.length === 2) {
-            return Math.floor(this.nextFloat(min, max));
+            return Math.floor(this.float(min, max));
         }
-        return this._next();
+        return this._int();
     }
 
 };

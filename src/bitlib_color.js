@@ -12,7 +12,7 @@ bitlib.color = {
     },
 
     randomRGB: function() {
-        return this.number(bitlib.random.nextInt(0, 0xffffff));
+        return this.number(bitlib.random.int(0, 0xffffff));
     },
 
     gray: function(shade) {
@@ -20,7 +20,7 @@ bitlib.color = {
     },
 
     randomGray: function() {
-        return this.gray(bitlib.random.nextInt(0, 255));
+        return this.gray(bitlib.random.int(0, 255));
     },
 
     hsv: function(h, s, v) {
