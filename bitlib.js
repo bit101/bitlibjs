@@ -454,7 +454,14 @@ bitlib.anim = function(fps, renderCallback) {
     if (typeof define === "function" && define.amd) {
         define(bitlib);
     } else {
-        window.bitlib = bitlib;
+        if(window.bitlib) {
+            for(var prop in bitlib) {
+                window.bitlib[prop] = bitlib[prop];
+            }
+        }
+        else {
+            window.bitlib = bitlib;
+        }
     }
 
 })();
