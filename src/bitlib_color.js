@@ -6,6 +6,14 @@ bitlib.color = {
     rgba: function(r, g, b, a) {
         return this.Color.create(r, g, b, a);
     },
+    
+    rgbf: function(r, g, b) {
+        return this.rgbaf(r, g, b, 1);
+    },
+    
+    rgbaf: function(r, g, b, a) {
+        return this.rgb(r * 255, g * 255, b * 255, a);
+    },
 
     number: function(num) {
         return this.rgb(num >> 16, num >> 8 & 0xff, num & 0xff);
@@ -62,10 +70,10 @@ bitlib.color = {
         else if(colorB.isColorObject) {
             cb = colorB;
         }
-        var r = bitlib.math.lerp(t, ca.red,   cb.red),
-            g = bitlib.math.lerp(t, ca.green, cb.green),
-            b = bitlib.math.lerp(t, ca.blue,  cb.blue),
-            a = bitlib.math.lerp(t, ca.alpha, cb.alpha);
+        var r = bitlib.math.lerp(ca.red,   cb.red, t),
+            g = bitlib.math.lerp(ca.green, cb.green, t),
+            b = bitlib.math.lerp(ca.blue,  cb.blue, t),
+            a = bitlib.math.lerp(ca.alpha, cb.alpha, t);
         return this.rgba(r, g, b, a);
     },
 

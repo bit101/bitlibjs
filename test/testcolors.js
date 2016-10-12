@@ -29,7 +29,7 @@ function testRGB(x, y) {
     context.fillStyle = bitlib.color.rgb(0, 0, 255);
     context.fillRect(80, 0, 19, 19);
     context.fillStyle = bitlib.color.rgb(0, 0, 0);
-    context.fillText("RGB", 0, 0);
+    context.fillText("RGB", 0, -1);
     context.restore();
 }
 
@@ -47,7 +47,7 @@ function testRGBA(x, y) {
     context.fillStyle = bitlib.color.rgba(0, 0, 255, 1);
     context.fillRect(80, 0, 19, 19);
     context.fillStyle = bitlib.color.rgba(0, 0, 0, 1);
-    context.fillText("RGBA", 0, 0);
+    context.fillText("RGBA", 0, -1);
     context.restore();
 }
 
@@ -65,7 +65,7 @@ function testNumber(x, y) {
     context.fillStyle = bitlib.color.number(0x0000ff);
     context.fillRect(80, 0, 19, 19);
     context.fillStyle = bitlib.color.number(0x000000);
-    context.fillText("Number", 0, 0);
+    context.fillText("Number", 0, -1);
     context.restore();
 }
 
@@ -80,7 +80,7 @@ function testRandomRGB(x, y) {
         }
     }
     context.fillStyle = "black";
-    context.fillText("randomRGB", 0, 0);
+    context.fillText("randomRGB", 0, -1);
     context.restore();
 }
 
@@ -95,7 +95,7 @@ function testRandomRGBSeeded(x, y) {
         }
     }
     context.fillStyle = "black";
-    context.fillText("randomRGB seeded", 0, 0);
+    context.fillText("randomRGB seeded", 0, -1);
     context.restore();
 }
 
@@ -113,7 +113,7 @@ function testGray(x, y) {
     context.fillStyle = bitlib.color.gray(204);
     context.fillRect(80, 0, 19, 19);
     context.fillStyle = bitlib.color.gray(0);
-    context.fillText("Gray", 0, 0);
+    context.fillText("Gray", 0, -1);
     context.restore();
 }
 
@@ -128,7 +128,7 @@ function testRandomGray(x, y) {
         }
     }
     context.fillStyle = "black";
-    context.fillText("randomGray", 0, 0);
+    context.fillText("randomGray", 0, -1);
     context.restore();
 }
 
@@ -143,7 +143,7 @@ function testRandomGraySeeded(x, y) {
         }
     }
     context.fillStyle = "black";
-    context.fillText("randomGray seeded", 0, 0);
+    context.fillText("randomGray seeded", 0, -1);
     context.restore();
 }
 
@@ -190,7 +190,7 @@ function testStrings(x, y) {
         }
     }
     context.fillStyle = "black";
-    context.fillText("strings", 0, 0);
+    context.fillText("strings", 0, -1);
     context.restore();
 
 }
@@ -211,7 +211,7 @@ function testHSV(x, y) {
         context.fillRect(x, 40, 19, 19);
     }
     context.fillStyle = "black";
-    context.fillText("hsv", 0, 0);
+    context.fillText("hsv", 0, -1);
     context.restore();
 }
 
@@ -250,6 +250,6 @@ function testLerp(x, y) {
         context.fillRect(x, 80, 19, 19);
     }
     context.fillStyle = "black";
-    context.fillText("lerp", 0, 0);
+    context.fillText("lerp", 0, -1);
     context.restore();
 }
