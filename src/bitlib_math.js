@@ -8,8 +8,8 @@ bitlib.math = {
     },
 
     map: function (srcValue, srcMin, srcMax, dstMin, dstMax) {
-        norm = this.norm(srcValue, srcMin, srcMax);
-        return lerp(norm, dstMin, dstMax);
+        var norm = this.norm(srcValue, srcMin, srcMax);
+        return this.lerp(norm, dstMin, dstMax);
     },
 
     clamp: function (value, min, max) {
