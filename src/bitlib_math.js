@@ -9,7 +9,7 @@ bitlib.math = {
 
     map: function (srcValue, srcMin, srcMax, dstMin, dstMax) {
         var norm = this.norm(srcValue, srcMin, srcMax);
-        return this.lerp(norm, dstMin, dstMax);
+        return this.lerp(dstMin, dstMax, norm);
     },
 
     clamp: function (value, min, max) {
@@ -60,8 +60,8 @@ bitlib.math = {
 
     lerpPoint: function(p0, p1, t) {
         return {
-            x: bitlib.math._lerp(p0.x, p1.x, t),
-            y: bitlib.math._lerp(p0.y, p1.y, t)
+            x: this.lerp(p0.x, p1.x, t),
+            y: this.lerp(p0.y, p1.y, t)
         };
     },
 
