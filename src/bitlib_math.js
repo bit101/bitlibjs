@@ -60,8 +60,8 @@ bitlib.math = {
 
     lerpPoint: function(p0, p1, t) {
         return {
-            x: bitlib.math.lerp(p0.x, p1.x, t),
-            y: bitlib.math.lerp(p0.y, p1.y, t)
+            x: bitlib.math._lerp(p0.x, p1.x, t),
+            y: bitlib.math._lerp(p0.y, p1.y, t)
         };
     },
 

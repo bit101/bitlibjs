@@ -70,10 +70,10 @@ bitlib.color = {
         else if(colorB.isColorObject) {
             cb = colorB;
         }
-        var r = bitlib.math.lerp(ca.red,   cb.red, t),
-            g = bitlib.math.lerp(ca.green, cb.green, t),
-            b = bitlib.math.lerp(ca.blue,  cb.blue, t),
-            a = bitlib.math.lerp(ca.alpha, cb.alpha, t);
+        var r = bitlib.math._lerp(ca.red,   cb.red, t),
+            g = bitlib.math._lerp(ca.green, cb.green, t),
+            b = bitlib.math._lerp(ca.blue,  cb.blue, t),
+            a = bitlib.math._lerp(ca.alpha, cb.alpha, t);
         return this.rgba(r, g, b, a);
     },
 

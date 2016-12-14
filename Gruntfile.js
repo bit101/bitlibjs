@@ -14,13 +14,15 @@ module.exports = function(grunt) {
                 context = grunt.file.read("src/bitlib_context.js"),
                 color = grunt.file.read("src/bitlib_color.js"),
                 random = grunt.file.read("src/bitlib_random.js"),
-                anim = grunt.file.read("src/bitlib_anim.js");
+                anim = grunt.file.read("src/bitlib_anim.js"),
+                perlin = grunt.file.read("src/bitlib_perlin.js");
 
             content = content.replace("${bitlib_math}", math);
             content = content.replace("${bitlib_context}", context);
             content = content.replace("${bitlib_color}", color);
             content = content.replace("${bitlib_random}", random);
             content = content.replace("${bitlib_anim}", anim);
+            content = content.replace("${bitlib_perlin}", perlin);
             return content;
           }
         }

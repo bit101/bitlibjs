@@ -222,34 +222,34 @@ function testLerp(x, y) {
     var a = "#ff0000",
         b = "rgb(0, 0, 255)";
     for(var x = 0; x < 100; x += 20) {
-        context.fillStyle = bitlib.color.lerp(x / 100, a, b);
+        context.fillStyle = bitlib.color._lerp(x / 100, a, b);
         context.fillRect(x, 0, 19, 19);
     }
 
     b = "rgba(0, 0, 255, 0)";
     for(var x = 0; x < 100; x += 20) {
-        context.fillStyle = bitlib.color.lerp(x / 100, a, b);
+        context.fillStyle = bitlib.color._lerp(x / 100, a, b);
         context.fillRect(x, 20, 19, 19);
     }
 
     b = "blue";
     for(var x = 0; x < 100; x += 20) {
-        context.fillStyle = bitlib.color.lerp(x / 100, a, b);
+        context.fillStyle = bitlib.color._lerp(x / 100, a, b);
         context.fillRect(x, 40, 19, 19);
     }
 
     b = 0x0000ff;
     for(var x = 0; x < 100; x += 20) {
-        context.fillStyle = bitlib.color.lerp(x / 100, a, b);
+        context.fillStyle = bitlib.color._lerp(x / 100, a, b);
         context.fillRect(x, 60, 19, 19);
     }
 
     b = "#00f";
     for(var x = 0; x < 100; x += 20) {
-        context.fillStyle = bitlib.color.lerp(x / 100, a, b);
+        context.fillStyle = bitlib.color._lerp(x / 100, a, b);
         context.fillRect(x, 80, 19, 19);
     }
     context.fillStyle = "black";
-    context.fillText("lerp", 0, -1);
+    context.fillText("_lerp", 0, -1);
     context.restore();
 }
