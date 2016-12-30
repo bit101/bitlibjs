@@ -134,40 +134,46 @@ bitlib.extendContext = function(context) {
         this.shadowBlur = blur;
     };
 
-    context.clear = function() {
+    context.clear = function(color) {
         this.save();
         this.setTransform(1, 0, 0, 1, 0, 0);
-        this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        if(color) {
+            this.fillStyle = color;
+            this.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+        else {
+            this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        }
         this.restore();
     }
 
     context.circle = function(x, y, radius) {
-        context.arc(x, y, radius, 0, Math.PI * 2);
+        this.arc(x, y, radius, 0, Math.PI * 2);
     }
 
     context.fillCircle = function(x, y, radius) {
-        context.beginPath();
-        context.circle(x, y, radius);
-        context.fill();
+        this.beginPath();
+        this.circle(x, y, radius);
+        this.fill();
     }
 
     context.strokeCircle = function(x, y, radius) {
-        context.beginPath();
-        context.circle(x, y, radius);
-        context.stroke();
+        this.beginPath();
+        this.circle(x, y, radius);
+        this.stroke();
     }
 
     context.ellipse = function(x, y, xr, yr) {
-        context.save();
-        context.translate(x, y);
-        context._scale(xr, yr);
-        context.arc(0, 0, 1, 0, Math.PI * 2);
-        context.restore();
+        this.save();
+        this.translate(x, y);
+        this.scale(xr, yr);
+        this.arc(0, 0, 1, 0, Math.PI * 2);
+        this.restore();
     }
 
     context.setSize = function(w, h) {
-        context.width = context.canvas.width = w;
-        context.height = context.canvas.height = h;
+        this.width = this.canvas.width = w;
+        this.height = this.canvas.height = h;
     }
 
 };
