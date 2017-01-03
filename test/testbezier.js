@@ -39,10 +39,9 @@ var pointsA = [
             y: 600
         }
     ],
-    anim = bitlib.anim(60, draw),
+    anim = bitlib.anim(draw).start(),
     angle = 0;
 
-anim.start();
 
 function draw() {
     var tt = Math.sin(angle) * 0.5 + 0.5;

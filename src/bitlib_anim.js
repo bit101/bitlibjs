@@ -1,7 +1,7 @@
-bitlib.anim = function(fps, renderCallback) {
+bitlib.anim = function(renderCallback, fps) {
 
     return {
-        fps: fps,
+        fps: fps || 60,
         renderCallback: renderCallback,
 
         start: function () {
@@ -9,10 +9,12 @@ bitlib.anim = function(fps, renderCallback) {
                 this.running = true;
                 this.render();
             }
+            return this;
         },
 
         stop: function () {
             this.running = false;
+            return this;
         },
 
         toggle: function () {
@@ -22,6 +24,7 @@ bitlib.anim = function(fps, renderCallback) {
             else {
                 this.start();
             }
+            return this;
         },
 
         render: function () {
@@ -37,5 +40,5 @@ bitlib.anim = function(fps, renderCallback) {
                 }, 1000 / this.fps);
             }
         }
-    }
+    };
 }

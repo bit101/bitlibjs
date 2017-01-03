@@ -4,7 +4,7 @@ bitlib.color = {
     },
 
     rgba: function(r, g, b, a) {
-        return this.Color.create(r, g, b, a);
+        return this.Color.create(r, g, b, a).toString();
     },
     
     rgbf: function(r, g, b) {

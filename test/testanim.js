@@ -1,4 +1,4 @@
-var anim1 = bitlib.anim(60, onRender1),
+var anim1 = bitlib.anim(onRender1),
     context1 = bitlib.context(100, 100),
     angle = 0;
 
@@ -25,7 +25,7 @@ function draw1() {
     context1.stroke();
 }
 
-var anim2 = bitlib.anim(10, onRender2),
+var anim2 = bitlib.anim(onRender2, 10),
     context2 = bitlib.context(200, 100),
     x = 0;
 
