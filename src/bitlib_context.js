@@ -70,7 +70,7 @@ bitlib.extendContext = function(context) {
         this.beginPath();
         this.moveTo(points[0].x, points[0].y);
         this.lineTo((points[0].x + points[1].x) / 2, (points[0].y + points[1].y) / 2);
-        for(var i = 0; i < points.length - 1; i++) {
+        for(var i = 1; i < points.length - 1; i++) {
             var p0 = points[i],
                 p1 = points[i + 1],
                 midx = (p0.x + p1.x) / 2,

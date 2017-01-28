@@ -19,18 +19,13 @@ for(var i = 0; i < points.length; i++) {
 }
 context.setShadow("rgba(0,0,0,0.5", 5, 5, 10);
 
-for(var i = 0;  i < 10; i++) {
-    for(var j = 0; j < points.length; j++) {
-        points[j].x += bitlib.random.float(-20, 20);
-        points[j].y += bitlib.random.float(-20, 20);
-    }
+context.lineWidth = 10;
+context.strokeStyle = bitlib.color.randomRGB();
+context.multiLoop(points);
 
-    context.lineWidth = 10;
-    context.strokeStyle = bitlib.color.randomRGB();
-    context.multiLoop(points);
-
-    context.lineWidth = 3;
-    context.strokeStyle = "rgba(255,255,255,0.15)";
+for(var i = 0;  i < 4; i++) {
+    context.lineWidth = 6 - i * 2;
+    context.strokeStyle = "rgba(255,255,255,0.1)";
     context.save();
     context.translate(-2, -2);
     context.multiLoop(points);
