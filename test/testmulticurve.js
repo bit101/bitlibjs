@@ -27,12 +27,12 @@ for(var i = 0;  i < 10; i++) {
 
     context.lineWidth = 10;
     context.strokeStyle = bitlib.color.randomRGB();
-    bitlib.math.multiLoop(points, context);
+    context.multiLoop(points);
 
     context.lineWidth = 3;
     context.strokeStyle = "rgba(255,255,255,0.15)";
     context.save();
     context.translate(-2, -2);
-    bitlib.math.multiLoop(points, context);
+    context.multiLoop(points);
     context.restore();
 }
