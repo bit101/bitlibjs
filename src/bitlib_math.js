@@ -131,6 +131,42 @@ bitlib.math = {
         else {
             return null;
         }
+    },
+
+    multiCurve: function(points, context) {
+        context.beginPath();
+        context.moveTo(points[0].x, points[0].y);
+        context.lineTo((points[0].x + points[1].x) / 2, (points[0].y + points[1].y) / 2);
+        for(var i = 0; i < points.length - 1; i++) {
+            var p0 = points[i],
+                p1 = points[i + 1],
+                midx = (p0.x + p1.x) / 2,
+                midy = (p0.y + p1.y) / 2;
+            context.quadraticCurveTo(p0.x, p0.y, midx, midy);
+
+        }
+        var p = points[points.length - 1];
+        context.lineTo(p.x, p.y);
+        context.stroke();
+    },
+
+    multiLoop: function(points, context) {
+        var pA = points[0],
+            pB = points[1],
+            pZ = points[points.length - 1],
+            mid1x = (pZ.x + pA.x) / 2,
+            mid1y = (pZ.y + pA.y) / 2;
+        context.beginPath();
+        context.moveTo(mid1x, mid1y);
+        for(var i = 0; i < points.length - 1; i++) {
+            var p0 = points[i],
+                p1 = points[i + 1],
+                midx = (p0.x + p1.x) / 2,
+                midy = (p0.y + p1.y) / 2;
+            context.quadraticCurveTo(p0.x, p0.y, midx, midy);
+        }
+        context.quadraticCurveTo(pZ.x, pZ.y, mid1x, mid1y);
+        context.stroke();
     }
 
 
