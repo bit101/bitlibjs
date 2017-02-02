@@ -208,7 +208,6 @@ bitlib.extendContext = function(context) {
     };
 
     context.multiCurve = function(points) {
-        this.beginPath();
         this.moveTo(points[0].x, points[0].y);
         this.lineTo((points[0].x + points[1].x) / 2, (points[0].y + points[1].y) / 2);
         for(var i = 1; i < points.length - 1; i++) {
@@ -221,6 +220,11 @@ bitlib.extendContext = function(context) {
         }
         var p = points[points.length - 1];
         this.lineTo(p.x, p.y);
+    };
+
+    context.strokeMultiCurve = function(points) {
+        this.beginPath();
+        this.multiCurve(points);
         this.stroke();
     };
 
@@ -230,7 +234,6 @@ bitlib.extendContext = function(context) {
             pZ = points[points.length - 1],
             mid1x = (pZ.x + pA.x) / 2,
             mid1y = (pZ.y + pA.y) / 2;
-        this.beginPath();
         this.moveTo(mid1x, mid1y);
         for(var i = 0; i < points.length - 1; i++) {
             var p0 = points[i],
@@ -240,8 +243,21 @@ bitlib.extendContext = function(context) {
             this.quadraticCurveTo(p0.x, p0.y, midx, midy);
         }
         this.quadraticCurveTo(pZ.x, pZ.y, mid1x, mid1y);
+    };
+
+    context.strokeMultiLoop = function(points) {
+        this.beginPath();
+        this.multiLoop(points);
         this.stroke();
     };
+
+    context.fillMultiLoop = function(points) {
+        this.beginPath();
+        this.multiLoop(points);
+        this.fill();
+    };
+
+
 
 
 };

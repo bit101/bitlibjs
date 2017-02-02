@@ -21,13 +21,13 @@ context.setShadow("rgba(0,0,0,0.5", 5, 5, 10);
 
 context.lineWidth = 10;
 context.strokeStyle = bitlib.color.randomRGB();
-context.multiLoop(points);
+context.strokeMultiCurve(points);
 
 for(var i = 0;  i < 4; i++) {
     context.lineWidth = 6 - i * 2;
     context.strokeStyle = "rgba(255,255,255,0.1)";
     context.save();
     context.translate(-2, -2);
-    context.multiLoop(points);
+    context.strokeMultiCurve(points);
     context.restore();
 }
