@@ -256,10 +256,33 @@ bitlib.extendContext = function(context) {
         this.multiLoop(points);
         this.fill();
     };
-
-
-
-
+    
+    context.path = function(points) {
+        context.moveTo(points[0].x, points[0].y);
+        for(var i = 1; i < points.length; i++) {
+            context.lineTo(points[i].x, points[i].y);
+        }
+    };
+    
+    context.strokePath = function(points, close) {
+        context.beginPath();
+        context.path(points);
+        if(close) {
+            context.closePath();
+        }
+        context.stroke();
+    };
+    
+    context.fillPath = function(points) {
+        context.beginPath();
+        context.path(points);
+        context.fill();
+    }
+    
+    
+    
+    
+    
 };
 
 bitlib.color = {
