@@ -11,6 +11,7 @@ ${bitlib_random}
 
 ${bitlib_anim}
 
+${bitlib_image}
 
     if (typeof define === "function" && define.amd) {
         define(bitlib);
