@@ -677,11 +677,12 @@ bitlib.anim = function(renderCallback, fps) {
                 this.running = true;
                 this.render();
             }
+            this.shouldKill = false;
             return this;
         },
 
         stop: function () {
-            this.running = false;
+            this.shouldKill = true;
             return this;
         },
 
@@ -696,6 +697,10 @@ bitlib.anim = function(renderCallback, fps) {
         },
 
         render: function () {
+            if(this.shouldKill) {
+                this.shouldKill = false;
+                this.running = false;
+            }
             if (this.running) {
                 if (this.renderCallback) {
                     this.renderCallback();
