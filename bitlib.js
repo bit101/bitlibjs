@@ -634,6 +634,32 @@ bitlib.random = {
         return this._int();
     },
 
+    power: function(min, max, power) {
+        if(arguments.length === 2) {
+            power = max;
+            max = min;
+            min = 0;
+        }
+        return min + Math.pow(this.float(1), power) * (max - min);
+    },
+
+    powerInt: function(min, max, power) {
+        return Math.floor(this.power(min, max, power));
+    },
+
+    gauss: function(min, max, g) {
+        if(arguments.length === 2) {
+            g = max;
+            max = min;
+            min = 0;
+        }
+        var total = 0;
+        for(var i = 0; i < g; i++) {
+            total += this.float(min, max);
+        }
+        return total / g;
+    },
+
     chooser: function() {
 
         return {
