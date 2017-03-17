@@ -18,7 +18,12 @@ bitlib.context = function (w, h, parent) {
 bitlib.extendContext = function(context) {
 
     context.setShadow =function(color, offsetX, offsetY, blur) {
-        this.shadowColor = color;
+        if(typeof color === "number") {
+            this.shadowColor = bitlib.color.rgba(0,0,0, color);
+        }
+        else {
+            this.shadowColor = color;
+        }
         this.shadowOffsetX = offsetX;
         this.shadowOffsetY = offsetY;
         this.shadowBlur = blur;
