@@ -141,7 +141,14 @@ bitlib.extendContext = function(context) {
         context.beginPath();
         context.path(points);
         context.fill();
-    }
+    };
+
+    context.line = function(x0, y0, x1, y1) {
+       context.beginPath();
+       context.moveTo(x0, y0);
+       context.lineTo(x1, y1);
+       context.stroke();
+    };
     
     
     

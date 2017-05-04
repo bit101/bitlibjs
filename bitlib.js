@@ -134,8 +134,20 @@ bitlib.math = {
         else {
             return null;
         }
-    }
+    },
 
+    tangentPointToCircle: function(x, y, cx, cy, cr, anticlockwise) {
+        var dist = bitlib.math.dist(x, y, cx, cy),
+            dir = anticlockwise ? 1 : -1,
+            angle = Math.acos(-cr / dist) * dir,
+            baseAngle = Math.atan2(cy - y, cx - x),
+            totalAngle = baseAngle + angle;
+
+        return {
+            x: cx + Math.cos(totalAngle) * cr,
+            y: cy + Math.sin(totalAngle) * cr
+        };
+    }
 };
 
 
@@ -282,7 +294,14 @@ bitlib.extendContext = function(context) {
         context.beginPath();
         context.path(points);
         context.fill();
-    }
+    };
+
+    context.line = function(x0, y0, x1, y1) {
+       context.beginPath();
+       context.moveTo(x0, y0);
+       context.lineTo(x1, y1);
+       context.stroke();
+    };
     
     
     
